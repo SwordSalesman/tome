@@ -19,6 +19,7 @@ function Provider({ children }) {
     selectSpell(response.data.results[0]);
   }, []);
 
+  // Change the active spell in the spell card
   const selectSpell = async (spell) => {
     // Check if user clicked the currently selected spell again
     if (selectedSpell && spell.index === selectedSpell.index) {
@@ -30,7 +31,8 @@ function Provider({ children }) {
       return;
     }
     // Fetching new spell details procedure
-    setSelectedSpell(null);
+    //setSelectedSpell(null);
+    setSelectedSpell({ index: spell.index });
     const response = await axios.get(`${urlBase}/${spell.index}`);
     setSelectedSpell(response.data);
   };

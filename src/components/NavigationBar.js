@@ -2,7 +2,7 @@ import Button from "./Button";
 
 function NavigationBar({ onPageSelect, activePage }) {
   return (
-    <div className="flex justify-center h-9">
+    <div className="flex justify-center h-9 mb-1">
       <Button
         active={activePage === "library"}
         onClick={() => onPageSelect("library")}

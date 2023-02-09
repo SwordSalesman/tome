@@ -92,7 +92,7 @@ function SpellCard() {
 
   return (
     <div className="overflow-auto">
-      {spell ? spellContent() : loadingIcon()}
+      {spell && spell.desc ? spellContent() : loadingIcon()}
     </div>
   );
 }
