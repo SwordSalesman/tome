@@ -1,7 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import SpellsContext from "../../context/spellsContext";
 import Button from "../Button";
 import InfoLine from "./InfoLine";
+import ThemeContext from "../../context/themeContext";
 
 const loadingMessages = [
   "Investigating the arcane",
@@ -25,13 +26,14 @@ const spellLevelText = (level, school) => {
   return level + numSuffix + " level " + school;
 };
 
-const divider = () => {
-  return <div className="border-b my-2"></div>;
+const divider = (theme) => {
+  return <div className={"border-b my-2" + theme.divider}></div>;
 };
 
 function SpellCard() {
   const { selectedSpell, savedSpells, saveSpellToggle } =
     useContext(SpellsContext);
+  const { theme } = useContext(ThemeContext);
   const spell = selectedSpell;
 
   const loadingIcon = () => {
@@ -76,12 +78,12 @@ function SpellCard() {
             </div>
           </div>
         </div>
-        {divider()}
+        {divider(theme)}
         <InfoLine title="Range" content={spell.range} />
         <InfoLine title="Components" content={componentsContent} />
         <InfoLine title="Duration" content={durationContent} />
         <InfoLine title="Casting Time" content={spell.casting_time} />
-        {divider()}
+        {divider(theme)}
         <InfoLine content={descContent} />
         {spell.higher_level.length > 0 && (
           <InfoLine title="At Higher Levels" content={spell.higher_level} />

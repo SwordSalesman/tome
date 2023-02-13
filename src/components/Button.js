@@ -1,12 +1,14 @@
 import classNames from "classnames";
+import { useContext } from "react";
+import ThemeContext from "../context/themeContext";
 
 function Button({ children, active, ...rest }) {
+  const { theme } = useContext(ThemeContext);
+
   const classes = classNames(
     rest.className,
-    "m-1 px-3 w-64 border border-2 rounded-full flex justify-center hover:brightness-90",
-    {
-      "bg-blue-500 border-blue-600 text-white": active,
-    }
+    active ? theme.clickableActive : theme.clickableInactive,
+    "m-1 px-3 w-64 border border-2 rounded-full flex justify-center"
   );
 
   return (

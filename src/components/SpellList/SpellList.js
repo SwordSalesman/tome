@@ -39,9 +39,8 @@ function SpellList({ page }) {
     return (
       groupSpells.length > 0 && (
         <>
-          <Row key={groupId} divider>
-            {spellbook && "Level "}
-            {groupId}
+          <Row key={String(groupId)} divider>
+            {spellbook && "Level " + groupId}
           </Row>
           {groupSpells}
         </>
