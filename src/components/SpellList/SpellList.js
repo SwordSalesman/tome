@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import SpellsContext from "../../context/spellsContext";
 import Row from "./Row";
+import { GiSpellBook } from "react-icons/gi";
 
 function SpellList({ page }) {
   const { spellList, selectedSpell, savedSpells, selectSpell } =
@@ -11,6 +12,23 @@ function SpellList({ page }) {
   const groups = spellbook
     ? Array.from(Array(9).keys())
     : "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+  if (!spellList.length) {
+    return (
+      <div className="opacity-50">
+        Loading... If nothing shows up here for a while then it seems an API
+        call has failed. I wish there was a spell for this...
+      </div>
+    );
+  }
+  if (spellbook && !savedSpells.length) {
+    return (
+      <div className="opacity-50">
+        Get studying! Click the book button on a spell to save it to your
+        spellbook!
+      </div>
+    );
+  }
 
   // Render a group which renders the spells of that level
   const renderedSpells = groups.map((groupId) => {

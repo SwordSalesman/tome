@@ -3,6 +3,7 @@ import SpellsContext from "../../context/spellsContext";
 import Button from "../Button";
 import InfoLine from "./InfoLine";
 import ThemeContext from "../../context/themeContext";
+import { GiSpellBook } from "react-icons/gi";
 
 const loadingMessages = [
   "Investigating the arcane",
@@ -66,10 +67,10 @@ function SpellCard() {
             active={savedSpells
               .map((savedSpell) => savedSpell.index)
               .includes(spell.index)}
-            className="w-12 text-2xl pt-0.5"
+            className="w-14 h-10 text-2xl p-0 pt-0.5"
             onClick={() => saveSpellToggle(spell)}
           >
-            📖
+            <GiSpellBook size={32} />
           </Button>
           <div className="ml-2">
             <div className="font-bold text-xl">{spell.name}</div>
