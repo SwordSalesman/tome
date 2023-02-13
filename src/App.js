@@ -34,7 +34,7 @@ function App() {
       >
         tome.io
         <Button
-          className={"h-8 text-xl w-12 absolute right-1 top-1 pt-1"}
+          className={"h-8 text-xl w-24 absolute right-1 top-1 pt-1"}
           onClick={() => toggleTheme()}
         >
           {themeMode === "dark" ? <BsMoonStars /> : <BsSun />}

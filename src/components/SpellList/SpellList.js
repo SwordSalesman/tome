@@ -40,7 +40,7 @@ function SpellList({ page }) {
       groupSpells.length > 0 && (
         <>
           <Row key={String(groupId)} divider>
-            {spellbook && "Level " + groupId}
+            {spellbook ? "Level " + groupId : groupId}
           </Row>
           {groupSpells}
         </>

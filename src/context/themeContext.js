@@ -29,9 +29,9 @@ function ThemeContextProvider({ children }) {
         " hover:bg-gray-100 dark:hover:bg-slate-700 hover:border-gray-200 dark:hover:border-slate-600 " +
         " cursor-pointer ",
       clickableActive:
-        " bg-blue-500 dark:bg-blue-500 " +
-        " text-white border-blue-600 dark:border-blue-400 " +
-        " hover:bg-blue-400 dark:hover:bg-blue-400 hover:border-blue-500 hover:border-blue-500 " +
+        " bg-yellow-500 dark:bg-indigo-500 " +
+        " text-white border-yellow-600 dark:border-indigo-400 " +
+        " hover:bg-yellow-400 dark:hover:bg-indigo-400 hover:border-yellow-500 dark:hover:border-indigo-500 " +
         " cursor-pointer ",
       divider:
         " bg-gray-100 dark:bg-slate-900 " +
@@ -39,9 +39,9 @@ function ThemeContextProvider({ children }) {
         " italic justify-center " +
         " border-gray-200 dark:border-slate-700",
       highlight:
-        " bg-blue-200 dark:bg-[#2d4587] " +
+        " bg-orange-200 dark:bg-[#2d4587] " +
         " border-gray-200 dark:border-slate-700 " +
-        " hover:bg-blue-300 dark:hover:bg-[#3d57a1] " +
+        " hover:bg-orange-300 dark:hover:bg-[#3d57a1] " +
         " cursor-pointer ",
     };
 

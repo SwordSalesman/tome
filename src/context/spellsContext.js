@@ -28,14 +28,15 @@ function SpellsContextProvider({ children }) {
 
   // Change the active spell in the spell card
   const selectSpell = async (spell) => {
-    window.localStorage.setItem("selectedSpell", spell.index);
     // Check if user clicked the currently selected spell again
     if (selectedSpell && spell.index === selectedSpell.index) {
       return;
     }
+    window.localStorage.setItem("selectedSpell", spell.index);
     // Spell is the 'full' version, likely obtained from the spellbook, no need to fetch anything!
-    if (savedSpells.map((s) => s.index).includes(spell.index)) {
-      setSelectedSpell(savedSpells.filter((s) => s.index === spell.index)[0]);
+    const matchingSpell = savedSpells.find((s) => s.index === spell.index);
+    if (matchingSpell && matchingSpell.desc) {
+      setSelectedSpell(matchingSpell);
       return;
     }
     // Fetching new spell details procedure
@@ -43,24 +44,40 @@ function SpellsContextProvider({ children }) {
     setSelectedSpell({ index: spell.index });
     const response = await axios.get(`${urlBase}/${spell.index}`);
     setSelectedSpell(response.data);
+    // If the spell is saved, save the full response in context to be used if clicked on again
+    if (matchingSpell) {
+      var newSavedSpells = savedSpells.filter((savedSpell) => {
+        return savedSpell.index !== spell.index;
+      });
+      setSavedSpells([...newSavedSpells, response.data]);
+    }
   };
 
   // Toggles between saved and not saved
   const saveSpellToggle = (spell) => {
-    // Remove the spell if it's already saved
+    var newSpells = [];
     if (savedSpells.map((s) => s.index).includes(spell.index)) {
-      var newSpells = savedSpells.filter((savedSpell) => {
+      // Remove the spell if it's already saved
+      newSpells = savedSpells.filter((savedSpell) => {
         return savedSpell.index !== spell.index;
       });
-      setSavedSpells(newSpells);
-      window.localStorage.setItem("savedSpells", JSON.stringify(newSpells));
+    } else {
+      // Add the spell if it isn't saved
+      newSpells = [...savedSpells, spell];
     }
-    // Add the spell if it isn't saved
-    else {
-      var newSpells = [...savedSpells, spell];
-      setSavedSpells(newSpells);
-      window.localStorage.setItem("savedSpells", JSON.stringify(newSpells));
-    }
+    setSavedSpells(newSpells);
+    window.localStorage.setItem(
+      "savedSpells",
+      JSON.stringify(
+        newSpells.map((s) => {
+          return {
+            name: s.name,
+            index: s.index,
+            level: s.level,
+          };
+        })
+      )
+    );
   };
 
   const spellsContext = {
