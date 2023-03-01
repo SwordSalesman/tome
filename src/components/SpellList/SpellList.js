@@ -13,7 +13,7 @@ function SpellList({ page }) {
     ? Array.from(Array(9).keys())
     : "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-  if (!spellList.length) {
+  if (!spellList?.length) {
     return (
       <div className="opacity-50">
         Loading... If nothing shows up here for a while then it seems an API

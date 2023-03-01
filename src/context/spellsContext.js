@@ -1,7 +1,9 @@
 import { createContext, useState, useCallback } from "react";
 import axios from "axios";
+//import customAxios from "../api.js";
 
-const urlBase = "/api/spells";
+const proxyPrefix = "https://api.codetabs.com/v1/proxy?quest=";
+const urlBase = proxyPrefix + "https://dnd5eapi.co/api/spells";
 const SpellsContext = createContext();
 
 // Provider is essentially a wrapper for the context and its main pupose is to store state
