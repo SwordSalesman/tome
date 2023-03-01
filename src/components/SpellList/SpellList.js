@@ -10,7 +10,7 @@ function SpellList({ page }) {
   const spellbook = page === "spellbook";
   const renderedSpellList = spellbook ? savedSpells : spellList;
   const groups = spellbook
-    ? Array.from(Array(9).keys())
+    ? Array.from(Array(10).keys())
     : "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
   if (!spellList?.length) {
