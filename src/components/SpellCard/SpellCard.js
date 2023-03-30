@@ -4,6 +4,7 @@ import Button from "../Button";
 import InfoLine from "./InfoLine";
 import ThemeContext from "../../context/themeContext";
 import { GiSpellBook } from "react-icons/gi";
+import { CircleLoader, ClipLoader } from "react-spinners";
 
 const loadingMessages = [
   "Investigating the arcane",
@@ -34,14 +35,22 @@ const divider = (theme) => {
 function SpellCard() {
   const { selectedSpell, savedSpells, saveSpellToggle } =
     useContext(SpellsContext);
-  const { theme } = useContext(ThemeContext);
+  const { theme, themeMode } = useContext(ThemeContext);
   const spell = selectedSpell;
 
   const loadingIcon = () => {
+    console.log(theme.lightHighlight);
     return (
-      <div className="text-center text-gray-500">
-        {loadingMessages[Math.floor(Math.random() * loadingMessages.length)] +
-          "..."}
+      <div className="h-96 w-full flex flex-col justify-center items-center">
+        <ClipLoader
+          color={
+            themeMode === "light" ? theme.lightHighlight : theme.darkHighlight
+          }
+        ></ClipLoader>
+        <div className="text-center text-gray-500 m-3">
+          {loadingMessages[Math.floor(Math.random() * loadingMessages.length)] +
+            "..."}
+        </div>
       </div>
     );
   };
@@ -95,6 +104,7 @@ function SpellCard() {
 
   return (
     <div className="overflow-auto">
+      {/* {loadingIcon()} */}
       {spell && spell.desc ? spellContent() : loadingIcon()}
     </div>
   );

@@ -15,7 +15,7 @@ function SpellList({ page }) {
 
   if (!spellList?.length) {
     return (
-      <div className="opacity-50">
+      <div className="opacity-50 text-center mt-4">
         Loading... If nothing shows up here for a while then it seems an API
         call has failed. I wish there was a spell for this...
       </div>
@@ -23,7 +23,7 @@ function SpellList({ page }) {
   }
   if (spellbook && !savedSpells.length) {
     return (
-      <div className="opacity-50">
+      <div className="opacity-50 text-center mt-4">
         Get studying! Click the book button on a spell to save it to your
         spellbook!
       </div>

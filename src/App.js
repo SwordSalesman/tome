@@ -28,20 +28,20 @@ function App() {
     <div className={"h-[100vh] justify" + theme.app}>
       <div
         className={
-          "text-3xl w-full border-b-2 mb-1 pt-2 pb-1 flex text-center justify-center font-medium" +
+          "text-2xl w-full border-b-2 py-2 mb-1 px-4 flex text-center justify-between font-bold" +
           theme.panel
         }
       >
-        tome.io
+        Tome
         <Button
-          className={"h-8 text-xl w-24 absolute right-1 top-1 pt-1"}
+          className={"h-8 text-xl w-12 absolute right-1 top-1 pt-1"}
           onClick={() => toggleTheme()}
         >
           {themeMode === "dark" ? <BsMoonStars /> : <BsSun />}
         </Button>
       </div>
       <div className="flex justify-center">
-        <div className="flex h-[90vh] max-w-5xl">
+        <div className="flex h-[90vh] w-3/4 max-w-5xl min-w-[600px]">
           <ContentPane className="w-1/3">
             <NavigationBar
               activePage={activePage}

@@ -43,6 +43,8 @@ function ThemeContextProvider({ children }) {
         " border-gray-200 dark:border-slate-700 " +
         " hover:bg-orange-300 dark:hover:bg-[#3d57a1] " +
         " cursor-pointer ",
+      lightHighlight: "#EAB308",
+      darkHighlight: "#6366F1",
     };
 
     setTheme(themeObj);
